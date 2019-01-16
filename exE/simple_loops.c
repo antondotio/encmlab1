@@ -14,14 +14,22 @@ int main(void)
   int *p;
   int i;
 
-  for (p = a; p < a + 4; p++)
-    printf("%d\n", *p);
+  p = a;
+  for_loop_start:
+    if(p >= a + 4) goto for_loop_end;
+      printf("%d\n", *p);
+      p++;
+      goto for_loop_start;
+  for_loop_end:
 
   i = 234567;
-  while (i > 1) {
-    printf("%d\n", i);
-    i /= 16;
-  }
+
+  while_loop_start:
+    if(i <= 0) goto while_loop_end;
+      printf("%d\n", i);
+      i /= 16;
+      goto while_loop_start;
+  while_loop_end:
 
   return 0;
 }

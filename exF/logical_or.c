@@ -26,10 +26,14 @@ int main(void)
 void func1(int arg1)
 {
   printf ("func1 called with arg1 = %d.\n", arg1);
-  if (func2(arg1) || func3(arg1))
-    printf("At least one of func2(%d) or func3(%d) is true.\n\n", arg1, arg1);
-  else
+
+  if(func2(arg1)) goto or_place;
+  if(func3(arg1)) goto or_place;
     printf("Neither func2(%d) nor func3(%d) is true.\n\n", arg1, arg1);
+    goto leave;
+  or_place:
+    printf("At least one of func2(%d) or func3(%d) is true.\n\n", arg1, arg1);
+  leave: ;
 }
 
 int func2(int arg2)
