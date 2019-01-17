@@ -33,8 +33,6 @@ void print_array(const char *str, const int *a, int n)
     goto for_loop_start;
   for_loop_end: ;
 
-  // for (i = 0; i < n; i++)
-  //   printf("    %d", a[i]);
   printf("\n");
 }
 
@@ -65,18 +63,4 @@ void sort_array(int *a, int n)
     goto outer_for_start;
   outer_for_end: ;
 
-
-// for (i = 0; i < n - 1; i++) {
-//     min = a[i];
-//     j_of_min = i;
-//     for (j = i + 1; j < n; j++) {
-//       if (a[j] < min) {
-//         min = a[j];
-//         j_of_min = j;
-//       }
-//     }
-//     a[j_of_min] = a[i];
-//     a[i] = min;
-//   }
-  
 }

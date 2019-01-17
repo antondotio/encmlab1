@@ -42,12 +42,6 @@ int main(void)
         goto first_for_start;
     first_for_end: ;
 
-    // for (i = 1; i <= POLY_DEGREE; i++)
-    //     if (f[i] >= 0)
-    //         printf(" + %.2f*pow(x,%d)", f[i], i);
-    //     else
-    //         printf(" - %.2f*pow(x,%d)", -f[i], i);
-
     printf("\nPlease enter a guess at a root, and a maximum number of\n"
            "updates to do, separated by a space.\n");
     scan_count = scanf("%lf%d", &guess, &max_updates);
@@ -56,21 +50,11 @@ int main(void)
         printf("Sorry, I couldn't understand the input.\n");
         exit(1);
     correct_count: ;
-
-    // if (scan_count != 2) {
-    //     printf("Sorry, I couldn't understand the input.\n");
-    //     exit(1);
-    // }
   
     if(max_updates >= 0) goto valid_input;
         printf("Sorry, a negative limit on updates does not make sense.\n");
         exit(1);
     valid_input: ;
-
-    // if (max_updates < 0)  {
-    //     printf("Sorry, a negative limit on updates does not make sense.\n");
-    //     exit(1);
-    // }
 
     printf("Running with initial guess %f.\n", guess);
 
@@ -81,9 +65,6 @@ int main(void)
         i--;
         goto second_for_start;
     second_for_end: ;
-
-    // for (i = POLY_DEGREE - 1; i >= 0; i--)
-    //     dfdx[i] = (i + 1) * f[i + 1];   // Calculus!
 
     current_x = guess;
     update_count = 0;
@@ -108,23 +89,6 @@ int main(void)
         update_count++;
     goto while_loop_start;
     while_loop_end: ;
-
-    // while (1) {
-    //     current_f = polyval(f, POLY_DEGREE, current_x);
-    //     printf("%d update(s) done; x is %.15f; f(x) is %.15e\n",
-    //            update_count, current_x, current_f);
-
-    //     if (fabs(current_f) < MAX_ABS_F) {
-    //         close_enough = 1;
-    //         break;
-    //     }
-    //     if (update_count == max_updates)
-    //         break;
-
-    //     current_dfdx = polyval(dfdx, POLY_DEGREE - 1, current_x);
-    //     current_x -= current_f / current_dfdx;
-    //     update_count++;
-    // }
     
     if(!close_enough) goto second_else_code;
         printf("Stopped with approximate solution of %.12f.\n", 
@@ -136,12 +100,6 @@ int main(void)
         goto end_if;
     end_if: ;
 
-    // if (close_enough)
-    //     printf("Stopped with approximate solution of %.12f.\n", 
-    //            current_x);
-    // else
-    //     printf("%d updates performed, |f(x)| still >= %g.\n", 
-    //            update_count, MAX_ABS_F);
     return 0;
 }
 
@@ -158,7 +116,5 @@ double polyval(const double *a, int n, double x)
         goto for_loop_start;
     for_loop_end: ;
 
-    // for (i = n - 1; i >= 0; i--)
-    //     result = x * result + a[i];
     return result;
 }
