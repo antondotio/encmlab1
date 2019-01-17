@@ -24,8 +24,17 @@ void print_array(const char *str, const int *a, int n)
 {
   int i;
   puts(str);
-  for (i = 0; i < n; i++)
+  
+  i = 0;
+  for_loop_start:
+  if(i >= n) goto for_loop_end;
     printf("    %d", a[i]);
+    i++;
+    goto for_loop_start;
+  for_loop_end: ;
+
+  // for (i = 0; i < n; i++)
+  //   printf("    %d", a[i]);
   printf("\n");
 }
 
@@ -35,16 +44,39 @@ void sort_array(int *a, int n)
 
   int i, j, min, j_of_min;
   
-  for (i = 0; i < n - 1; i++) {
+  i = 0;
+  outer_for_start:
+  if(i >= n-1) goto outer_for_end;
     min = a[i];
     j_of_min = i;
-    for (j = i + 1; j < n; j++) {
-      if (a[j] < min) {
-        min = a[j];
-        j_of_min = j;
-      }
-    }
+  j = i + 1;
+  inner_for_start:
+  if(j >= n) goto inner_for_end;
+    if(a[j] >= min) goto end_if;
+      min = a[j];
+      j_of_min = j;
+  end_if: ;
+      j++;
+      goto inner_for_start;
+  inner_for_end: ;
     a[j_of_min] = a[i];
     a[i] = min;
-  }
+    i++;
+    goto outer_for_start;
+  outer_for_end: ;
+
+
+// for (i = 0; i < n - 1; i++) {
+//     min = a[i];
+//     j_of_min = i;
+//     for (j = i + 1; j < n; j++) {
+//       if (a[j] < min) {
+//         min = a[j];
+//         j_of_min = j;
+//       }
+//     }
+//     a[j_of_min] = a[i];
+//     a[i] = min;
+//   }
+  
 }
